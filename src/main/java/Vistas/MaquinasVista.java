@@ -65,8 +65,18 @@ public class MaquinasVista extends javax.swing.JFrame {
         });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Estado:");
 
@@ -235,7 +245,7 @@ public class MaquinasVista extends javax.swing.JFrame {
             }
             
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "El costo por hora y el tiempo de reparacion deben ser ");
+            JOptionPane.showMessageDialog(this, "El costo por hora y el tiempo de reparacion deben ser numeros");
         }        
         
     }//GEN-LAST:event_btnAgregarActionPerformed
@@ -264,10 +274,43 @@ public class MaquinasVista extends javax.swing.JFrame {
             }
             
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "El costo por hora y el tiempo de reparacion deben ser ");
+            JOptionPane.showMessageDialog(this, "El costo por hora y el tiempo de reparacion deben ser numericos");
         }        
         
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+
+        MaquinaController controlador = new MaquinaController(this);
+
+        try {
+            maquina.setId(Integer.parseInt(txtId.getText()));
+
+            int opc = JOptionPane.showConfirmDialog(this, "¿Está seguro de eliminar la maquina?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+
+            if (opc == 0) {
+                if (controlador.eliminarMaquina(maquina)) {
+                    controlador.limpiar();
+                    JOptionPane.showMessageDialog(this, "Maquina eliminads correctamente");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error al eliminar la maquina");
+                }
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "El ID debe ser un numero");
+        }
+
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+
+        txtId.setText("0");
+        txtNombre.setText("");
+        txtCosto.setText("");
+        txtTiempoReparacion.setText("");
+        cbEstado.setSelectedItem("Disponible");
+
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private final JFrame menu;
     private final Maquina maquina;

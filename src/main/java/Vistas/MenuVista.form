@@ -119,16 +119,25 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Administrar Cultivos"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCultivosActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCosechadores">
           <Properties>
             <Property name="text" type="java.lang.String" value="Adminsitrar Cosechadores"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCosechadoresActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnEmpleados">
           <Properties>
             <Property name="text" type="java.lang.String" value="Administrar Empleados"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEmpleadosActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCerrarSesion">
           <Properties>

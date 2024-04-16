@@ -6,15 +6,18 @@ create table Cultivo(
     fechaSiembra varchar(12) not null,
     fechaRecoleccion varchar(12) not null,
     plantaSembrada varchar(50) not null,
-    tipoCultivo int not null,
+    tipoCultivo varchar(20) not null,
     ubicacionCultivo varchar(100) not null,
     estado bool not null
 );
 
 insert into Cultivo (fechaSiembra, fechaRecoleccion, plantaSembrada, tipoCultivo, ubicacionCultivo, estado) 
-	values ("25/2/2024", "21/3/2024", "Trigo", 1, "San Carlos", true),
-	("20/2/2024", "22/3/2024", "Lentejas", 2, "Perez Zeledon", true),
-    ("19/1/2023", "20/2/2024", "Sandia", 6, "Alajuela", true);
+	values ("25/2/2024", "21/3/2024", "Trigo", "Cereales", "San Carlos", true),
+	("20/2/2024", "22/3/2024", "Lentejas", "Leguminosas", "Perez Zeledon", true),
+    ("19/1/2023", "20/2/2024", "Cebolla", "Hortalizas", "Alajuela", true),
+    ("19/1/2023", "20/2/2024", "Girasol", "Ornamentales", "Alajuela", true),
+    ("19/1/2023", "20/2/2024", "Papa", "Raices y Tuberculos", "Alajuela", true),
+    ("19/1/2023", "20/2/2024", "Sandia", "Frutales", "Alajuela", true);
     
 CREATE TABLE maquinas_agricolas (
     Codigo INT AUTO_INCREMENT PRIMARY KEY,
@@ -23,6 +26,8 @@ CREATE TABLE maquinas_agricolas (
     CostoHora DECIMAL(10, 2) NOT NULL,
     enUso boolean NOT NULL
 );
+
+select * from maquinas_agricolas;
 
 INSERT INTO maquinas_agricolas (Nombre, TiempoReparacion, CostoHora, enUso) VALUES
 ('Tractor A', 24, 50.00, false),

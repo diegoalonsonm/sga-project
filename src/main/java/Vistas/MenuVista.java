@@ -1,5 +1,8 @@
 package Vistas;
 
+import Controladores.CosechadorController;
+import Controladores.CultivoController;
+import Controladores.EmpleadoController;
 import Controladores.MaquinaController;
 import Modelos.Persona;
 import java.io.DataInputStream;
@@ -96,10 +99,25 @@ public class MenuVista extends javax.swing.JFrame {
         jLabel2.setText("Que desea hacer hoy");
 
         btnCultivos.setText("Administrar Cultivos");
+        btnCultivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCultivosActionPerformed(evt);
+            }
+        });
 
         btnCosechadores.setText("Adminsitrar Cosechadores");
+        btnCosechadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCosechadoresActionPerformed(evt);
+            }
+        });
 
         btnEmpleados.setText("Administrar Empleados");
+        btnEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmpleadosActionPerformed(evt);
+            }
+        });
 
         btnCerrarSesion.setText("Cerrar Sesion");
         btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -175,9 +193,9 @@ public class MenuVista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
-        int opc = JOptionPane.showConfirmDialog(this, "De verdad deseas cerrar sesion?");
+        int opc = JOptionPane.showConfirmDialog(this, "¿Está seguro que desea cerrar sesion?", "Confirmar cierre de sesion", JOptionPane.YES_NO_OPTION);
         
-        if (opc == 0) {
+        if (opc == 0) {         
             JOptionPane.showMessageDialog(this, "Gracias por preferirnos");
             this.dispose();
             principal.setVisible(true);
@@ -191,6 +209,29 @@ public class MenuVista extends javax.swing.JFrame {
         maquinas.iniciar();
         
     }//GEN-LAST:event_btnMaquinariaActionPerformed
+
+    private void btnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadosActionPerformed
+        this.dispose();
+        
+        EmpleadoController empleados = new EmpleadoController(this);
+        empleados.iniciar();
+    }//GEN-LAST:event_btnEmpleadosActionPerformed
+
+    private void btnCultivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCultivosActionPerformed
+        this.dispose();
+       
+        CultivoController cultivos = new CultivoController(this);
+        cultivos.iniciar();
+    }//GEN-LAST:event_btnCultivosActionPerformed
+
+    private void btnCosechadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCosechadoresActionPerformed
+        
+        this.dispose();
+        
+        
+        CosechadorController cosechadores = new CosechadorController(this);
+        cosechadores.iniciar();
+    }//GEN-LAST:event_btnCosechadoresActionPerformed
 
     private final JFrame principal;
     // Variables declaration - do not modify//GEN-BEGIN:variables

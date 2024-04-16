@@ -40,7 +40,12 @@ public class MaquinaController implements ActionListener {
                 vista.txtNombre.setText(vista.tblMaquinas.getValueAt(fila, 1).toString());
                 vista.txtTiempoReparacion.setText(vista.tblMaquinas.getValueAt(fila, 2).toString());
                 vista.txtCosto.setText(vista.tblMaquinas.getValueAt(fila, 3).toString());
-                vista.cbEstado.setSelectedItem(vista.tblMaquinas.getValueAt(fila, 4).toString());
+
+                if (vista.tblMaquinas.getValueAt(fila, 4).toString().equals("Disponible")) {
+                    vista.cbEstado.setSelectedItem("Disponible");
+                } else {
+                    vista.cbEstado.setSelectedItem("En Uso");
+                }
             }            
         });      
     }
@@ -169,7 +174,7 @@ public class MaquinaController implements ActionListener {
 
     public boolean eliminarMaquina(Maquina maquina) {
         Conexion conexion = new Conexion();
-        String query = "delete from maquinas_agricolas where id = ?";
+        String query = "delete from maquinas_agricolas where Codigo = ?";
 
         try {
             CallableStatement cs = conexion.conectar().prepareCall(query);
